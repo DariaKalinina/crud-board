@@ -20,7 +20,7 @@ export function saveItem(id = null, data) {
 export function changeItem(id, data) {
     return {
         type: CHANGE,
-        payload: { data },
+        payload: data,
         id: id
     }
 }

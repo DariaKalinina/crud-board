@@ -6,8 +6,8 @@ export default function boardList(state = myStorage.storage, action) {
 
     switch (type) {
         case SAVE:
-          myStorage.addBoard(payload, generateId);
-          return myStorage.storage;
+            myStorage.addBoard(payload, generateId);
+            return myStorage.storage;
 
         case CHANGE:
             const indexInArray = state.findIndex((board) => {
