@@ -12,7 +12,7 @@ class Board extends React.Component {
             id: props.id ? props.board.filter((board) => board.id === props.id).id : null,
             title: props.id ? props.board.filter((board) => board.id === props.id).title : '',
             text: props.id ? props.board.filter((board) => board.id === props.id).text : '',
-            phone: props.id ? props.board.filter((board) => board.id === props.id).phone : '',
+            phone: props.id ? props.board.filter((board) => board.id === props.id).phone : '+7 (___) ___ - __ - __',
         };
     }
 
@@ -45,6 +45,13 @@ class Board extends React.Component {
                     handler={this.handlerChange}
                     type={'textarea'}
                     textHelper={['Обязательное поле', 'Не более 300 символов']}
+                />
+                <BoardField
+                    title={'Телефон'}
+                    text={this.state.phone}
+                    handler={this.handlerChange}
+                    type={'phone'}
+                    textHelper={['Обязательное поле']}
                 />
                 <button onClick={this.handlerSubmit}>Подать</button>
             </div>
