@@ -5,7 +5,7 @@ class MyStorage {
         this.dbName = 'boardList';
 
         //если нет выжеленной ячейки памяти с данными, то иницируем ячейку
-        if (this.storage === undefined) {
+        if (this.storage === null) {
             this.init(data);
         }
     };
