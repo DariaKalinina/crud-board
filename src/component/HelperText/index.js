@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './index.css';
+import './index.scss';
 
 class HelperText extends React.Component {
     switchType = (type) => {
@@ -10,9 +10,10 @@ class HelperText extends React.Component {
                 return 'helper helper--error';
             case 'valid':
                 return 'helper helper--valid ';
+            default:
+                return 'helper helper--info';
         }
     };
-
 
     render() {
         const { textArray, type } = this.props;

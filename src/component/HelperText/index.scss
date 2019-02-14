@@ -1,0 +1,38 @@
+.helper{
+    position: relative;
+    font-size: 14px;
+    &--info{
+        color: #68717c;
+        &:before{
+            position: absolute;
+            content: '?';
+            border: 1px solid #68717c;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &--error{
+        color: #fa5e5b;
+        &:before{
+            position: absolute;
+            content: '!';
+            border: 1px solid #fa5e5b;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &--valid{
+        color: #16c98d;
+        &:after{
+            position: absolute;
+
+        }
+        &:before{
+            position: absolute;
+
+        }
+    }
+}
+

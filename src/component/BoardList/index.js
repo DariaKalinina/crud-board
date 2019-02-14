@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { deleteItem, changeItem } from '../../AC';
-import './index.css';
+import './index.scss';
 import BoardItem from '../BoardItem';
 
 class BoardList extends React.Component {

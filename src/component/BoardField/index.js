@@ -1,6 +1,6 @@
 import * as React from 'react';
 import HelperText from '../HelperText';
-import './index.css';
+import './index.scss';
 
 class BoardField extends React.Component {
     constructor(props) {
@@ -83,8 +83,8 @@ class BoardField extends React.Component {
                     { this.chooseContent(type, text) }
                     { textHelper &&
                         <HelperText
-                            textHelper={textHelper}
-                            isValid={this.state.validStatus}
+                            textArray={textHelper}
+                            type={this.state.validStatus}
                         />
                     }
                 </div>

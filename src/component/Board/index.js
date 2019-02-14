@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BoardField from '../BoardField';
 import { saveItem, changeItem } from '../../AC';
-import './index.css';
+import './index.scss';
 
 class Board extends React.Component {
     constructor(props) {

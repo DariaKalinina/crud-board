@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Board from '../Board';
 import BoardList from '../BoardList';
-import './index.css';
+import './index.scss';
 
 class App extends React.Component {
     render() {
