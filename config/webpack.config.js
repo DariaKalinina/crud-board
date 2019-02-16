@@ -23,7 +23,6 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -146,7 +145,7 @@ module.exports = function(webpackEnv) {
     ].filter(Boolean),
     output: {
       // The build folder.
-      path: isEnvProduction ? paths.appBuild : undefined,
+      path: isEnvProduction ? paths.appBuild : 'undefined',
       // Add /* filename */ comments to generated require()s in the output.
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
@@ -447,15 +446,6 @@ module.exports = function(webpackEnv) {
                 'sass-loader'
               ),
             },
-            //svg-sprite loader
-            {
-              test: /\.svg$/,
-              loader: 'svg-sprite-loader',
-              options: {
-                extract: true,
-                publicPath: '/'
-              }
-            },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
@@ -552,7 +542,6 @@ module.exports = function(webpackEnv) {
         fileName: 'asset-manifest.json',
         publicPath: publicPath,
       }),
-      new SpriteLoaderPlugin({ plainSprite: true }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how Webpack interprets its code. This is a practical
       // solution that requires the user to opt into importing specific locales.

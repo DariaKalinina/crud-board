@@ -30,8 +30,8 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div className='board'>
-                <h1 className='board__title'>Подать объявление</h1>
+            <div className='board-main'>
+                <h1 className='board-main__title'>Подать объявление</h1>
                 <BoardField
                     title={'Заголовок'}
                     text={this.state.title}

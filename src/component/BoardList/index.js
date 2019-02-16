@@ -9,6 +9,7 @@ class BoardList extends React.Component {
     render() {
         return (
             <div className='board-list'>
+                <h2>Объявление</h2>
                 <ul>
                     {
                         this.props.boardList.map(board =>
