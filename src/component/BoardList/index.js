@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteItem, changeItem } from '../../AC';
+import { deleteItem, chooseItem } from '../../AC';
 import './index.scss';
 import BoardItem from '../BoardItem';
 
@@ -13,7 +13,12 @@ class BoardList extends React.Component {
                 <ul>
                     {
                         this.props.boardList.map(board =>
-                            <BoardItem key={board.id} board={board}/>
+                            <BoardItem
+                                key={board.id}
+                                board={board}
+                                chooseItem={this.props.chooseItem}
+                                deleteItem={this.props.deleteItem}
+                            />
                         )
                     }
                 </ul>
@@ -29,7 +34,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => bindActionCreators(
     {
         deleteItem,
-        changeItem
+        chooseItem
     },
     dispatch,
 );

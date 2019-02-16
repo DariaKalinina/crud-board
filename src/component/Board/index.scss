@@ -1,5 +1,6 @@
 .board-main {
   margin-bottom: 64px;
+  color: #68717c;
   &__title {
     font-family: Arial, SourceSansPro, sans-serif;
     font-size: 24px;
@@ -7,6 +8,21 @@
     font-style: normal;
     font-stretch: normal;
     line-height: 1.58;
-    color: #1b2834;
+  }
+}
+
+.submit-button{
+  width: 141px;
+  height: 36px;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 1px 0 0 rgba(27, 40, 52, 0.16);
+  background-image: linear-gradient(to bottom, #2d74da, #2367c8);
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 100;
+  &:hover{
+    background-image: linear-gradient(to top, #2d74da, #276ccf, #2367c8);
   }
 }

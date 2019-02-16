@@ -13,7 +13,7 @@ export default function boardList(state = myStorage.storage, action) {
             const indexInArray = state.findIndex((board) => {
               return board.id === id;
             });
-            myStorage.changeBoard(payload.data, id, indexInArray);
+            myStorage.changeBoard(payload, id, indexInArray);
             return myStorage.storage;
 
         case DELETE:

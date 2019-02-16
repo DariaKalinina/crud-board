@@ -2,8 +2,16 @@ import * as React from 'react';
 import './index.scss';
 
 class BoardItem extends React.Component {
+    handleChange = (id) => {
+        this.props.chooseItem(id);
+    };
+
+    handleDelete = (id) => {
+        this.props.deleteItem(id);
+    };
+
     render() {
-        const { title, text, phone } = this.props.board;
+        const { title, text, phone, id} = this.props.board;
         return (
             <li className='board-item'>
                 <div className='board boar--left'>
@@ -16,8 +24,8 @@ class BoardItem extends React.Component {
                         <div className='board__phone'>{phone}</div>
                     </div>
                     <div className='board board--vertical'>
-                        <button className='button button--blue'>Редактировать</button>
-                        <button className='button button--red'>Удалить</button>
+                        <button onClick={() => this.handleChange(id)} className='button button--blue'>Редактировать</button>
+                        <button onClick={() => this.handleDelete(id)} className='button button--red'>Удалить</button>
                     </div>
                 </div>
             </li>

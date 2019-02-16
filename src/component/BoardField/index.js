@@ -3,22 +3,15 @@ import HelperText from '../HelperText';
 import './index.scss';
 
 class BoardField extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            validStatus: 'null',
-        };
-    }
-
-    fieldStyle = (type) => {
+    fieldStyle = (type, validStatus) => {
         const className = [];
         if (type === 'input') {
             className.push('field__input');
         } else if(type === 'textarea') {
             className.push('field__textarea');
         }
-        if(!this.state.validStatus) {
-            className.push('');
+        if(validStatus === 'error') {
+            className.push('field--error');
         }
         return className.join(' ');
     };
@@ -26,10 +19,14 @@ class BoardField extends React.Component {
     handlerChange = (e, title) => {
         const { handler } = this.props;
         let value = e.target.value;
+
+        // TODO: upgrade or delete phone regexp
+        //const regexp = /\+7\(\d\d\d\) \d\d\d-\d\d-\d\d/;
+
         if(title === 'phone') {
             const numbers = e.target.value.replace(/\D/g, '');
             let array = [numbers.slice(1, 4), numbers.slice(4, 7), numbers.slice(7, 9), numbers.slice(9, 11)];
-            value = '+7('
+            value = '+7 ('
                 + (array[0] ? array[0] : '___')
                 + ') '
                 + (array[1] ? array[1] : '___')
@@ -41,14 +38,14 @@ class BoardField extends React.Component {
         handler(title, value);
     };
 
-    chooseContent = (type, text) => {
+    chooseContent = (type, text, validStatus) => {
         switch (type) {
             case 'input':
                 return (
                     <input
                         value={text}
                         onChange={(e) => this.handlerChange(e, 'title')}
-                        className={this.fieldStyle('input')}
+                        className={this.fieldStyle('input', validStatus)}
                         maxLength={140}
                     />
                 );
@@ -68,23 +65,28 @@ class BoardField extends React.Component {
                         value={text}
                         pattern='[0-9]{10}'
                         onChange={(e) => this.handlerChange(e, 'phone')}
-                        className={this.fieldStyle('input')}
+                        className={this.fieldStyle('input', validStatus)}
                     />
                 );
         }
     };
 
     render() {
-        const { title, text, type, textHelper} = this.props;
+        const { title, text, type, textHelper, validStatus} = this.props;
+        const validStatusString = (validStatus === false)
+            ? 'error'
+            : (validStatus === true)
+                ? 'valid'
+                : 'info';
         return (
             <div className='field'>
                 <span className='field__title'>{ title }</span>
                 <div className='field__content'>
-                    { this.chooseContent(type, text) }
+                    { this.chooseContent(type, text, validStatusString) }
                     { textHelper &&
                         <HelperText
                             textArray={textHelper}
-                            type={this.state.validStatus}
+                            type={validStatusString}
                         />
                     }
                 </div>

@@ -4,8 +4,6 @@ import './index.scss';
 class HelperText extends React.Component {
     switchType = (type) => {
         switch(type) {
-            case 'info':
-                return 'helper helper--info';
             case 'error':
                 return 'helper helper--error';
             case 'valid':
@@ -14,12 +12,22 @@ class HelperText extends React.Component {
                 return 'helper helper--info';
         }
     };
+    switchContent = (type, textArray) => {
+        switch(type) {
+            case 'error':
+                return <p>Заполните поле</p>;
+            case 'valid':
+                return <p>Заполнено</p>;
+            default:
+                return textArray.map((text, index) => <p key={index}>{text}</p>);
+        }
+    };
 
     render() {
         const { textArray, type } = this.props;
         return (
             <div className={this.switchType(type)}>
-                {textArray.map(text => <p>{text}</p>)}
+                {this.switchContent(type, textArray)}
             </div>
         );
     }
