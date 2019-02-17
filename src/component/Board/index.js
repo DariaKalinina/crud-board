@@ -13,7 +13,7 @@ class Board extends React.Component {
                 id: null,
                 title: '',
                 text: '',
-                phone: '+7 (___) ___ - __ - __',
+                phone: '',
             },
             isValid: {
                 validTitle: null,
@@ -30,7 +30,7 @@ class Board extends React.Component {
                     id: currentBoard ? currentBoard.id : null,
                     title: currentBoard ? currentBoard.title : '',
                     text: currentBoard ? currentBoard.text : '',
-                    phone: currentBoard ? currentBoard.phone : '+7 (___) ___ - __ - __',
+                    phone: currentBoard ? currentBoard.phone : '',
                 }
             };
         } else return null;
@@ -99,7 +99,7 @@ class Board extends React.Component {
                     text={this.state.data.text}
                     handler={this.handlerChange}
                     type={'textarea'}
-                    textHelper={['Обязательное поле', 'Не более 300 символов']}
+                    textHelper={['Необязательное поле', 'Не более 300 символов']}
                 />
                 <BoardField
                     title={'Телефон'}
