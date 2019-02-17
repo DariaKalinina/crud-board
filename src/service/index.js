@@ -31,9 +31,9 @@ class MyStorage {
     };
 
     createBoard = (id, board) => {
-        const { title, text, phone,} = board;
+        const { title, text, phone, city} = board;
 
-        if ([title, text, phone].some(elem => elem === undefined)) {
+        if ([title, text, phone, city].some(elem => elem === undefined)) {
             return false;
         }
 
@@ -42,6 +42,7 @@ class MyStorage {
             title,
             text,
             phone,
+            city,
         };
     };
 

@@ -2,6 +2,8 @@ import * as React from 'react';
 import HelperText from '../HelperText';
 import './index.scss';
 
+const city = ['Москва', 'Хабаровск', 'Чебоксары'];
+
 class BoardField extends React.Component {
     fieldStyle = (type, validStatus) => {
         const className = [];
@@ -16,24 +18,22 @@ class BoardField extends React.Component {
         return className.join(' ');
     };
 
-    handlerChange = (e, title) => {
+    handlerChange = (e, field) => {
         const { handler } = this.props;
         let value = e.target.value;
-
-        // TODO: upgrade or delete phone regexp
-        //const regexp = /\+7\(\d\d\d\) \d\d\d-\d\d-\d\d/;
-
-        if(title === 'phone') {
+        if(field === 'phone') {
             const numbers = e.target.value.replace(/\D/g, '');
-            console.log('1', numbers);
             const regex = /^([^\s]{1})([^\s]{3})([^\s]{3})([^\s]{2})([^\s]{2})$/g;
             const match = regex.exec(numbers);
             if (match) {
                 match.shift();
                 value = '+' + match[0]+ ' ('+ match[1] +') ' + match[2] + '-' + match[3] + '-' + match[4];
             }
+            const numberValue = match ? value : numbers;
+            handler(field, numberValue);
+            return;
         }
-        handler(title, value);
+        handler(field, value);
     };
 
     chooseContent = (type, text, validStatus) => {
@@ -61,12 +61,26 @@ class BoardField extends React.Component {
                 return (
                     <input
                         value={text}
-                        pattern='[0-9]{10}'
                         maxLength={18}
                         placeholder='_ (___) ___ - __ - __'
                         onChange={(e) => this.handlerChange(e, 'phone')}
                         className={this.fieldStyle('input', validStatus)}
                     />
+                );
+            case 'city':
+                return (
+                    <select
+                        value={text}
+                        onChange={(e) => this.handlerChange(e, 'city')}
+                        className={this.fieldStyle('input', validStatus)}
+                    >
+                        <option value={''} disabled hidden></option>
+                        {
+                            city.map((item, index) =>
+                             <option value={item} key={index}>{item}</option>
+                            )
+                        }
+                    </select>
                 );
         }
     };

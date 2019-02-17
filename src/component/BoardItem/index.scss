@@ -52,6 +52,24 @@
 
     }
   }
+  &__city{
+    position: relative;
+    padding-left: 31px;
+    margin-bottom: 14px;
+    &:after{
+      position: absolute;
+      content: '';
+      background-image: url('../../picture/location.svg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      top: -3px;
+      left: 0;
+      width: 24px;
+      height: 24px;
+
+    }
+  }
 }
 
 .button{

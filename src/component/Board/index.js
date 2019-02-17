@@ -14,6 +14,7 @@ class Board extends React.Component {
                 title: '',
                 text: '',
                 phone: '',
+                city: '',
             },
             isValid: {
                 validTitle: null,
@@ -31,16 +32,17 @@ class Board extends React.Component {
                     title: currentBoard ? currentBoard.title : '',
                     text: currentBoard ? currentBoard.text : '',
                     phone: currentBoard ? currentBoard.phone : '',
+                    city: currentBoard ? currentBoard.city : '',
                 }
             };
         } else return null;
     }
 
-    handlerChange = (title, value) => {
+    handlerChange = (field, value) => {
         this.setState({
             data: {
                 ...this.state.data,
-                [title]: value,
+                [field]: value,
             }
         });
     };
@@ -70,7 +72,8 @@ class Board extends React.Component {
                     id: null,
                     title: '',
                     text: '',
-                    phone: '+7 (___) ___ - __ - __',
+                    phone: '',
+                    city: '',
                 },
                 isValid: {
                     validTitle: null,
@@ -108,6 +111,13 @@ class Board extends React.Component {
                     validStatus={this.state.isValid.validNumber}
                     type={'phone'}
                     textHelper={['Обязательное поле']}
+                />
+                <BoardField
+                    title={'Город'}
+                    text={this.state.data.city}
+                    handler={this.handlerChange}
+                    type={'city'}
+                    textHelper={['Необязательное поле']}
                 />
                 <button className={'submit-button'} onClick={this.handlerSubmit}>Подать</button>
             </div>

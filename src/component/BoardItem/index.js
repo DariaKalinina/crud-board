@@ -11,7 +11,7 @@ class BoardItem extends React.Component {
     };
 
     render() {
-        const { title, text, phone, id} = this.props.board;
+        const { title, text, phone, city, id} = this.props.board;
         return (
             <li className='board-item'>
                 <div className='board boar--left'>
@@ -22,6 +22,7 @@ class BoardItem extends React.Component {
                 <div className='board board--right'>
                     <div className='board board--vertical'>
                         <div className='board__phone'>{phone}</div>
+                        <div className='board__city'>{city}</div>
                     </div>
                     <div className='board board--vertical'>
                         <button onClick={() => this.handleChange(id)} className='button button--blue'>Редактировать</button>
