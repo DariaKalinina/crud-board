@@ -33,7 +33,24 @@ class BoardField extends React.Component {
             handler(field, numberValue);
             return;
         }
+        if(field === 'city') {
+            console.log('city',value);
+        }
         handler(field, value);
+    };
+
+    handlerChangeForCity = (e, value, field) => {
+        const { handler } = this.props;
+        const cityList = document.querySelector('.select__option');
+        cityList.classList.remove('select__option--open');
+        e.preventDefault();
+        handler(field, value);
+    };
+
+    openList = (e) => {
+        e.preventDefault();
+        const cityList = document.querySelector('.select__option');
+        cityList.classList.add('select__option--open');
     };
 
     chooseContent = (type, text, validStatus) => {
@@ -69,18 +86,28 @@ class BoardField extends React.Component {
                 );
             case 'city':
                 return (
-                    <select
-                        value={text}
-                        onChange={(e) => this.handlerChange(e, 'city')}
-                        className={this.fieldStyle('input', validStatus)}
-                    >
-                        <option value={''} disabled hidden></option>
-                        {
-                            city.map((item, index) =>
-                             <option value={item} key={index}>{item}</option>
-                            )
-                        }
-                    </select>
+                    <div className='select'>
+                        <div className='select__field'>
+                            {text}
+                        </div>
+                        <a href='#' className='select__remove' onClick={(e) => this.handlerChangeForCity(e,'', 'city')}>
+                        </a>
+                        <a href='#' className='select__open' onClick={(e) => this.openList(e)}>
+                        </a>
+                        <ul className='select__option'>
+                            {
+                                city.map((item, index) =>
+                                    <li
+                                        className='select__item'
+                                        key={index}
+                                        onClick={(e) => this.handlerChangeForCity(e, item, 'city')}
+                                    >
+                                        {item}
+                                    </li>
+                                )
+                            }
+                        </ul>
+                    </div>
                 );
         }
     };
