@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BoardField from '../BoardField';
@@ -138,3 +139,16 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
+
+Board.propTypes = {
+    board: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        text: PropTypes.string,
+        phone: PropTypes.string.isRequired,
+        city: PropTypes.string,
+    })),
+    id: PropTypes.string,
+    saveItem: PropTypes.func,
+    changeItem: PropTypes.func,
+};

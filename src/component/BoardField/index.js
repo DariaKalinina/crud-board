@@ -1,6 +1,7 @@
 import * as React from 'react';
 import HelperText from '../HelperText';
 import './index.scss';
+import PropTypes from 'prop-types';
 
 const city = ['Москва', 'Хабаровск', 'Чебоксары'];
 
@@ -90,10 +91,10 @@ class BoardField extends React.Component {
                         <div className='select__field'>
                             {text}
                         </div>
-                        <a href='#' className='select__remove' onClick={(e) => this.handlerChangeForCity(e,'', 'city')}>
-                        </a>
-                        <a href='#' className='select__open' onClick={(e) => this.openList(e)}>
-                        </a>
+                        <button className='select__remove' onClick={(e) => this.handlerChangeForCity(e,'', 'city')}>
+                        </button>
+                        <button className='select__open' onClick={(e) => this.openList(e)}>
+                        </button>
                         <ul className='select__option'>
                             {
                                 city.map((item, index) =>
@@ -109,6 +110,7 @@ class BoardField extends React.Component {
                         </ul>
                     </div>
                 );
+            default: break;
         }
     };
 
@@ -137,3 +139,12 @@ class BoardField extends React.Component {
 }
 
 export default BoardField;
+
+BoardField.propTypes = {
+    type: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    validStatus: PropTypes.bool,
+    textHelper: PropTypes.arrayOf(PropTypes.string),
+    handler: PropTypes.func,
+};

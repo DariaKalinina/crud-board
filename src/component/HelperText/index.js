@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './index.scss';
+import PropTypes from 'prop-types';
 
 class HelperText extends React.Component {
     switchType = (type) => {
@@ -34,3 +35,8 @@ class HelperText extends React.Component {
 }
 
 export default HelperText;
+
+HelperText.propTypes = {
+    textArray: PropTypes.array,
+    type: PropTypes.string.isRequired,
+};

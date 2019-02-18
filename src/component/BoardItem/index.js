@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './index.scss';
+import PropTypes from 'prop-types';
 
 class BoardItem extends React.Component {
     handleChange = (id) => {
@@ -35,3 +36,16 @@ class BoardItem extends React.Component {
 }
 
 export default BoardItem;
+
+
+BoardItem.propTypes = {
+    board: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        text: PropTypes.string,
+        phone: PropTypes.string.isRequired,
+        city: PropTypes.string,
+    }),
+    deleteItem: PropTypes.func,
+    chooseItem: PropTypes.func,
+};

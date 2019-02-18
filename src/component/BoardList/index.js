@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { deleteItem, chooseItem } from '../../AC';
 import './index.scss';
 import BoardItem from '../BoardItem';
+import PropTypes from 'prop-types';
 
 class BoardList extends React.Component {
     render() {
@@ -33,7 +34,6 @@ class BoardList extends React.Component {
 
 const mapStateToProps = (state) => ({
     boardList: state.boardList,
-    id: state.id
 });
 const mapDispatchToProps = (dispatch) => bindActionCreators(
     {
@@ -44,3 +44,15 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardList);
+
+BoardList.propTypes = {
+    board: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        text: PropTypes.string,
+        phone: PropTypes.string.isRequired,
+        city: PropTypes.string,
+    })),
+    deleteItem: PropTypes.func,
+    chooseItem: PropTypes.func,
+};
