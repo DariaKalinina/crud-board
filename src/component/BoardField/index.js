@@ -34,22 +34,17 @@ class BoardField extends React.Component {
             handler(field, numberValue);
             return;
         }
-        if(field === 'city') {
-            console.log('city',value);
-        }
         handler(field, value);
     };
 
-    handlerChangeForCity = (e, value, field) => {
+    handlerChangeForCity = (value, field) => {
         const { handler } = this.props;
         const cityList = document.querySelector('.select__option');
         cityList.classList.remove('select__option--open');
-        e.preventDefault();
         handler(field, value);
     };
 
-    openList = (e) => {
-        e.preventDefault();
+    openList = () => {
         const cityList = document.querySelector('.select__option');
         cityList.classList.add('select__option--open');
     };
@@ -91,17 +86,20 @@ class BoardField extends React.Component {
                         <div className='select__field'>
                             {text}
                         </div>
-                        <button className='select__remove' onClick={(e) => this.handlerChangeForCity(e,'', 'city')}>
-                        </button>
-                        <button className='select__open' onClick={(e) => this.openList(e)}>
-                        </button>
+                        {text &&
+                        <button
+                            className='select__remove'
+                            onClick={() => this.handlerChangeForCity('', 'city')}
+                        />
+                        }
+                        <button className='select__open' onClick={this.openList} />
                         <ul className='select__option'>
                             {
-                                city.map((item, index) =>
+                                city.map((item) =>
                                     <li
                                         className='select__item'
-                                        key={index}
-                                        onClick={(e) => this.handlerChangeForCity(e, item, 'city')}
+                                        key={item}
+                                        onClick={() => this.handlerChangeForCity(item, 'city')}
                                     >
                                         {item}
                                     </li>

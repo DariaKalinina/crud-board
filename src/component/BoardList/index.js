@@ -10,7 +10,7 @@ class BoardList extends React.Component {
     render() {
         return (
             <div className='board-list'>
-                <h2>Объявление</h2>
+                <h2 className='board-list__title'>Объявление</h2>
                 <ul>
                     {
                         this.props.boardList
