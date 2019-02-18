@@ -12,7 +12,11 @@ class BoardList extends React.Component {
                 <h2>Объявление</h2>
                 <ul>
                     {
-                        this.props.boardList.map(board =>
+                        this.props.boardList
+                            .sort((boardA, boardB) =>
+                                boardB.id - boardA.id
+                            )
+                            .map(board =>
                             <BoardItem
                                 key={board.id}
                                 board={board}

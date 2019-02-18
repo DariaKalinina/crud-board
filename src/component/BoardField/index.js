@@ -27,7 +27,7 @@ class BoardField extends React.Component {
             const match = regex.exec(numbers);
             if (match) {
                 match.shift();
-                value = '+' + match[0]+ ' ('+ match[1] +') ' + match[2] + '-' + match[3] + '-' + match[4];
+                value = '+7 ('+ match[1] +') ' + match[2] + '-' + match[3] + '-' + match[4];
             }
             const numberValue = match ? value : numbers;
             handler(field, numberValue);
@@ -62,7 +62,7 @@ class BoardField extends React.Component {
                     <input
                         value={text}
                         maxLength={18}
-                        placeholder='_ (___) ___ - __ - __'
+                        placeholder='+7 (___) ___ - __ - __'
                         onChange={(e) => this.handlerChange(e, 'phone')}
                         className={this.fieldStyle('input', validStatus)}
                     />
