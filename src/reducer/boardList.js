@@ -10,17 +10,11 @@ export default function boardList(state = myStorage.storage, action) {
             return myStorage.storage;
 
         case CHANGE:
-            const indexInArray = state.findIndex((board) => {
-              return board.id === id;
-            });
-            myStorage.changeBoard(payload, id, indexInArray);
+            myStorage.changeBoard(payload, id);
             return myStorage.storage;
 
         case DELETE:
-            const deleteIndex = state.findIndex((board) => {
-              return board.id === payload;
-            });
-            myStorage.deleteBoard(deleteIndex);
+            myStorage.deleteBoard(payload);
             return myStorage.storage;
 
         default: {

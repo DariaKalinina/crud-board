@@ -58,12 +58,14 @@ class MyStorage {
         return newBoard;
     };
 
-    changeBoard = (board, id, indexInArray) => {
+    changeBoard = (board, id) => {
         const store = this.storage;
         const newBoard = this.createBoard(id, board);
-
+        const changeIndex = store.findIndex((board) => {
+            return board.id === id;
+        });
         if (newBoard !== false) {
-            store.splice(indexInArray, 1, newBoard);
+            store.splice(changeIndex, 1, newBoard);
             this.storage = store;
         }
 
@@ -72,7 +74,10 @@ class MyStorage {
 
     deleteBoard = (deleteBoardIndex) => {
         const store = this.storage;
-        let res = store.splice(deleteBoardIndex, 1);
+        const deleteIndex = store.findIndex((board) => {
+            return board.id === deleteBoardIndex;
+        });
+        let res = store.splice(deleteIndex, 1);
         this.storage = store;
 
         return !!res.length;
