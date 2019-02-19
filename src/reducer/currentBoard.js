@@ -7,8 +7,10 @@ export default function currentBoard(state = null, action) {
         case CHOOSE_ID:
             const newState = payload;
             return newState;
+
         case CHANGE:
             return null;
+
         default: {
             return state;
         }

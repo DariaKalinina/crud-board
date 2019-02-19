@@ -3,6 +3,7 @@ import './index.scss';
 import PropTypes from 'prop-types';
 
 class HelperText extends React.Component {
+
     switchType = (type) => {
         switch(type) {
             case 'error':
@@ -13,6 +14,7 @@ class HelperText extends React.Component {
                 return 'helper helper--info';
         }
     };
+
     switchContent = (type, textArray) => {
         switch(type) {
             case 'error':
@@ -20,15 +22,16 @@ class HelperText extends React.Component {
             case 'valid':
                 return <p>Заполнено</p>;
             default:
-                return textArray.map((text, index) => <p key={index}>{text}</p>);
+                return textArray.map(text => <p key={text}>{ text }</p>);
         }
     };
 
     render() {
         const { textArray, type } = this.props;
+
         return (
             <div className={this.switchType(type)}>
-                {this.switchContent(type, textArray)}
+                { this.switchContent(type, textArray) }
             </div>
         );
     }

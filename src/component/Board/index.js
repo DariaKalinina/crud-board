@@ -4,25 +4,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BoardField from '../BoardField';
 import { saveItem, changeItem } from '../../AC';
+import { fieldType } from '../common/constant.js';
 import './index.scss';
 
 class Board extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: {
-                id: null,
-                title: '',
-                text: '',
-                phone: '',
-                city: '',
-            },
-            isValid: {
-                validTitle: null,
-                validNumber: null,
-            }
-        };
-    }
+
+    state = {
+        data: {
+            id: null,
+            title: '',
+            text: '',
+            phone: '',
+            city: '',
+        },
+        isValid: {
+            validTitle: null,
+            validNumber: null,
+        }
+    };
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.id && prevState.data.id !== nextProps.id) {
@@ -48,26 +47,31 @@ class Board extends React.Component {
         });
     };
 
-    validField = () => {
+    isValidField = () => {
         const validTitle = this.state.data.title.length > 0;
         const validNumber =  this.state.data.phone.replace(/\D/g, '').length === 11;
+
         this.setState({
             isValid: {
                 validTitle: validTitle,
                 validNumber: validNumber,
             }
         });
+
         return {validTitle, validNumber};
     };
 
     handlerSubmit = () => {
-        const isValid = this.validField();
+        const isValid = this.isValidField();
+
         if (isValid.validNumber && isValid.validTitle) {
+
             if (this.state.data.id) {
                 this.props.changeItem(this.state.data.id, this.state.data);
             } else {
                 this.props.saveItem(this.state.data.id, this.state.data);
             }
+
             this.setState({
                 data: {
                     id: null,
@@ -88,21 +92,21 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div className='board-main'>
-                <h1 className='board-main__title'>Подать объявление</h1>
+            <div className='current-board'>
+                <h1 className='current-board__title'>Подать объявление</h1>
                 <BoardField
                     title={'Заголовок'}
                     text={this.state.data.title}
                     handler={this.handlerChange}
                     validStatus={this.state.isValid.validTitle}
-                    type={'input'}
+                    type={fieldType.input}
                     textHelper={['Обязательное поле', 'Не более 140 символов']}
                 />
                 <BoardField
                     title={'Текст объявления'}
                     text={this.state.data.text}
                     handler={this.handlerChange}
-                    type={'textarea'}
+                    type={fieldType.textarea}
                     textHelper={['Необязательное поле', 'Не более 300 символов']}
                 />
                 <BoardField
@@ -110,14 +114,14 @@ class Board extends React.Component {
                     text={this.state.data.phone}
                     handler={this.handlerChange}
                     validStatus={this.state.isValid.validNumber}
-                    type={'phone'}
+                    type={fieldType.phoneInput}
                     textHelper={['Обязательное поле']}
                 />
                 <BoardField
                     title={'Город'}
                     text={this.state.data.city}
                     handler={this.handlerChange}
-                    type={'city'}
+                    type={fieldType.select}
                     textHelper={['Необязательное поле']}
                 />
                 <button className={'submit-button'} onClick={this.handlerSubmit}>Подать</button>
@@ -130,6 +134,7 @@ const mapStateToProps = (state) => ({
     board: state.boardList,
     id: state.id
 });
+
 const mapDispatchToProps = (dispatch) => bindActionCreators(
     {
         saveItem,

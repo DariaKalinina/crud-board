@@ -2,9 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { deleteItem, chooseItem } from '../../AC';
-import './index.scss';
 import BoardItem from '../BoardItem';
 import PropTypes from 'prop-types';
+import './index.scss';
 
 class BoardList extends React.Component {
     render() {
@@ -35,6 +35,7 @@ class BoardList extends React.Component {
 const mapStateToProps = (state) => ({
     boardList: state.boardList,
 });
+
 const mapDispatchToProps = (dispatch) => bindActionCreators(
     {
         deleteItem,
