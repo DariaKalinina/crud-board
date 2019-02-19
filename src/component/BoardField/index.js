@@ -60,7 +60,7 @@ class BoardField extends React.Component {
         cityList.classList.add('select__option--open');
     };
 
-    chooseContent = (type, text, validStatus) => {
+    renderFieldByContext = (type, text, validStatus) => {
         switch (type) {
             case fieldType.input:
                 return (
@@ -135,7 +135,7 @@ class BoardField extends React.Component {
             <div className='field'>
                 <span className='field__title'>{ title }</span>
                 <div className='field__content'>
-                    { this.chooseContent(type, text, validStatusString) }
+                    { this.renderFieldByContext(type, text, validStatusString) }
                     { textHelper &&
                         <HelperText
                             textArray={textHelper}

@@ -47,7 +47,7 @@ class Board extends React.Component {
         });
     };
 
-    isValidField = () => {
+    validateField = () => {
         const validTitle = this.state.data.title.length > 0;
         const validNumber =  this.state.data.phone.replace(/\D/g, '').length === 11;
 
@@ -62,7 +62,7 @@ class Board extends React.Component {
     };
 
     handlerSubmit = () => {
-        const isValid = this.isValidField();
+        const isValid = this.validateField();
 
         if (isValid.validNumber && isValid.validTitle) {
 
