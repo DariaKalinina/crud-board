@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "22d263cb8e25aad7c7d9",
-    "url": "/crud-board/static/css/main.55b64137.chunk.css"
+    "revision": "69d68b0649017c4911e0",
+    "url": "/crud-board/static/css/main.4725b05c.chunk.css"
   },
   {
-    "revision": "22d263cb8e25aad7c7d9",
-    "url": "/crud-board/static/js/main.22d263cb.chunk.js"
+    "revision": "69d68b0649017c4911e0",
+    "url": "/crud-board/static/js/main.69d68b06.chunk.js"
   },
   {
     "revision": "94ee521210aedeaccb82",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/crud-board/static/media/location.4e914679.svg"
   },
   {
-    "revision": "3e2d256228d4be1222fc7b7c68c52666",
+    "revision": "2e36ff4732e4bfd423b812f8ef39cd82",
     "url": "/crud-board/index.html"
   }
 ];

@@ -1,14 +1,14 @@
 {
-  "main.css": "/crud-board/static/css/main.55b64137.chunk.css",
-  "main.js": "/crud-board/static/js/main.22d263cb.chunk.js",
-  "main.js.map": "/crud-board/static/js/main.22d263cb.chunk.js.map",
+  "main.css": "/crud-board/static/css/main.4725b05c.chunk.css",
+  "main.js": "/crud-board/static/js/main.69d68b06.chunk.js",
+  "main.js.map": "/crud-board/static/js/main.69d68b06.chunk.js.map",
   "static/js/1.94ee5212.chunk.js": "/crud-board/static/js/1.94ee5212.chunk.js",
   "static/js/1.94ee5212.chunk.js.map": "/crud-board/static/js/1.94ee5212.chunk.js.map",
   "runtime~main.js": "/crud-board/static/js/runtime~main.c08c20d3.js",
   "runtime~main.js.map": "/crud-board/static/js/runtime~main.c08c20d3.js.map",
   "static/media/index.scss": "/crud-board/static/media/location.4e914679.svg",
-  "static/css/main.55b64137.chunk.css.map": "/crud-board/static/css/main.55b64137.chunk.css.map",
+  "static/css/main.4725b05c.chunk.css.map": "/crud-board/static/css/main.4725b05c.chunk.css.map",
   "index.html": "/crud-board/index.html",
-  "precache-manifest.0eb71c677aa9a63962140bc1faed0abc.js": "/crud-board/precache-manifest.0eb71c677aa9a63962140bc1faed0abc.js",
+  "precache-manifest.f16c1fc90e4ff388419c8a66aa8f81e3.js": "/crud-board/precache-manifest.f16c1fc90e4ff388419c8a66aa8f81e3.js",
   "service-worker.js": "/crud-board/service-worker.js"
 }
